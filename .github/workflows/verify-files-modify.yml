@@ -11,7 +11,7 @@ jobs:
       - name: verify-version
         uses: actions-cool/verify-files-modify@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           verify-files: 'action.yml, LICENSE'
           verify-paths: '.github/, dist/'
           comment: |
