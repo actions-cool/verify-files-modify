@@ -1,23 +1,29 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-name: 'Action JS Template'
-description: 'A simple javascript template for rapid development of GitHub actions.'
+name: 'Verify Files Modify'
+description: 'Verify PR files modification.'
 author: 'xrkffgg'
 
 branding:
   # https://feathericons.com/
   # e.g. https://haya14busa.github.io/github-action-brandings/
-  icon: 'file'
-  color: 'blue'
+  icon: 'align-justify'
+  color: 'red'
 
 inputs:
-  GITHUB_TOKEN:
+  token:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
-
-#outputs:
-#  result:
-#    description: action result
+  skip-verify-authority:
+    description: Skip verify by creator authority
+  verify-files:
+    description: Verify files modification
+  verify-paths:
+    description: Verify paths modification
+  comment:
+    description: Comment when verification success
+  close:
+    description: Close PR when verification success
 
 runs:
   using: 'node12'

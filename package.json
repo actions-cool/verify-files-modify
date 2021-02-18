@@ -1,17 +1,17 @@
 {
-  "name": "action-js-template",
-  "version": "0.0.1",
+  "name": "verify-files-modify",
+  "version": "1.0.0",
   "private": true,
-  "description": "A javascript template for rapid development of GitHub actions.",
+  "description": "Verify PR files modification.",
   "main": "src/main.js",
   "scripts": {
     "package": "ncc build",
-    "format": "prettier --write **/*.js",
-    "format-check": "prettier --check **/*.js"
+    "format": "prettier --write src/*.js",
+    "format-check": "prettier --check src/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/actions-cool/action-js-template",
+    "url": "https://github.com/actions-cool/verify-files-modify",
     "branch": "main"
   },
   "author": "xrkffgg",
