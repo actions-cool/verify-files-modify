@@ -43,7 +43,7 @@ jobs:
 ## Note
 
 - When PR come from fork, it requires `pull_request_target` to comment or close. When use pull_request_target, must [read](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target)
-- When use `pull_request` and PR come from fork. It will show CI badge status only.
+- When use `pull_request` and PR come from fork. It will show CI badge status only
 
 ## Changelog
 
