@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/github/workflow/status/actions-cool/verify-files-modify/CI?style=flat-square)
 [![](https://img.shields.io/badge/marketplace-verify--files--modify-blueviolet?style=flat-square)](https://github.com/marketplace/actions/verify-files-modify)
+[![](https://img.shields.io/github/v/release/actions-cool/verify-files-modify?style=flat-square&color=orange)](https://github.com/actions-cool/verify-files-modify/releases)
 
 Verify PR files modification.
 
