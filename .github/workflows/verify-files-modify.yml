@@ -1,0 +1,19 @@
+name: Verify Files modify
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: verify-version
+        uses: actions-cool/verify-files-modify@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          verify-files: 'action.yml, LICENSE'
+          verify-paths: '.github/, dist/'
+          comment: |
+            Please don't modify this.
+          close: true
