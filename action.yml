@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-name: 'Verify Files Modify'
+name: 'Verify Files Modify2'
 description: 'Verify PR files modification.'
 author: 'xrkffgg'
 
