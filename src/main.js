@@ -70,7 +70,7 @@ async function run() {
 
       core.info(`The check result is ${result}.`);
 
-      if (!result) {
+      if (!result && context.eventName === 'pull_request_target') {
         let ifHasComment = false;
         let commentId;
         const commentData = await octokit.issues.listComments({
@@ -118,6 +118,10 @@ async function run() {
           core.info(`Actions: [close-pr][${number}] success!`);
         }
 
+        core.setFailed(
+          `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
+        );
+      } else if (!result && context.eventName === 'pull_request') {
         core.setFailed(
           `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
         );

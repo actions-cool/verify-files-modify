@@ -7114,7 +7114,7 @@ async function run() {
 
       core.info(`The check result is ${result}.`);
 
-      if (!result) {
+      if (!result && context.eventName === 'pull_request_target') {
         let ifHasComment = false;
         let commentId;
         const commentData = await octokit.issues.listComments({
@@ -7134,7 +7134,7 @@ async function run() {
 
         const body = `${comment}\n\n${FIXED}`;
 
-        if (ifHasComment) {
+        if (comment && ifHasComment) {
           await octokit.issues.updateComment({
             owner,
             repo,
@@ -7142,7 +7142,7 @@ async function run() {
             body,
           });
           core.info(`update-comment!`);
-        } else {
+        } else if (comment) {
           await octokit.issues.createComment({
             owner,
             repo,
@@ -7162,6 +7162,10 @@ async function run() {
           core.info(`Actions: [close-pr][${number}] success!`);
         }
 
+        core.setFailed(
+          `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
+        );
+      } else if (!result && context.eventName === 'pull_request') {
         core.setFailed(
           `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
         );
