@@ -60,7 +60,9 @@ async function run() {
 
       if (skipVerifyAuthority) {
         result = await checkAuthority();
-      } else {
+      }
+
+      if (!result) {
         const changeFiles = await getFiles();
         for (let i = 0; i < changeFiles.length; i += 1) {
           if (
