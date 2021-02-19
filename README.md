@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: verify-version
-        uses: actions-cool/verify-files-modify@v1.0.0
+        uses: actions-cool/verify-files-modify@v1.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           forbid-files: 'action.yml, LICENSE'
