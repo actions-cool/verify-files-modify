@@ -6020,7 +6020,7 @@ async function run() {
             comment_id: commentId,
             body,
           });
-          core.info(`update-comment!`);
+          core.info(`Actions: [update-comment] success!`);
         } else if (comment) {
           await octokit.issues.createComment({
             owner,
@@ -6028,7 +6028,7 @@ async function run() {
             issue_number: number,
             body,
           });
-          core.info(`create-comment!`);
+          core.info(`Actions: [create-comment] success!`);
         }
 
         if (close == 'true') {
