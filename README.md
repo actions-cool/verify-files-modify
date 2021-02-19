@@ -34,7 +34,7 @@ jobs:
 
 | Name | Desc | Type | Required |
 | -- | -- | -- | -- |
-| token | GitHub token | string | ✔ |
+| token | GitHub token | string | ✖ |
 | forbid-files | Forbid files. Higher than allowed. Support multiple | string | ✖ |
 | forbid-paths | Forbid paths. Higher than allowed. Support multiple | string | ✖ |
 | allowed-files | Allowed files. Support multiple | string | ✖ |
