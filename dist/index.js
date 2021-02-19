@@ -6125,7 +6125,7 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
   if (!result && allowedFiles) {
     const allowedFilesArr = dealStringToArr(allowedFiles);
     for (let i = 0; i < allowedFilesArr.length; i += 1) {
-      if (changeFile !== forbidFilesArr[i]) {
+      if (changeFile !== allowedFilesArr[i]) {
         result = true;
         break;
       }
