@@ -5985,6 +5985,8 @@ async function run() {
           ) {
             result = false;
             break;
+          } else {
+            result = true;
           }
         }
       }
