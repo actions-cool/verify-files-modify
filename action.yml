@@ -14,7 +14,7 @@ inputs:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
-  skip-verify-authority:
+  skip-verify-authority:2
     description: Skip verify by creator authority.
   forbid-files:
     description: Forbid files. Higher than allowed.
