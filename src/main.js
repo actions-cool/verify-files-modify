@@ -24,8 +24,10 @@ async function run() {
       const comment = core.getInput('comment');
       const close = core.getInput('close');
 
-      const verifyFiles = core.getInput('verify-files');
-      const verifyPaths = core.getInput('verify-paths');
+      const forbidFiles = core.getInput('forbid-files');
+      const forbidPaths = core.getInput('forbid-paths');
+      const allowedFiles = core.getInput('allowed-files');
+      const allowedPaths = core.getInput('allowed-paths');
 
       async function getFiles(page = 1) {
         let { data } = await octokit.pulls.listFiles({
@@ -61,7 +63,15 @@ async function run() {
       } else {
         const changeFiles = await getFiles();
         for (let i = 0; i < changeFiles.length; i += 1) {
-          if (doVerifyFile(changeFiles[i].filename, verifyFiles, verifyPaths)) {
+          if (
+            doVerifyFile(
+              changeFiles[i].filename,
+              forbidFiles,
+              forbidPaths,
+              allowedFiles,
+              allowedPaths,
+            )
+          ) {
             result = false;
             break;
           }

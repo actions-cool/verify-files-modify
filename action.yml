@@ -15,15 +15,19 @@ inputs:
     default: ${{ github.token }}
     required: true
   skip-verify-authority:
-    description: Skip verify by creator authority
-  verify-files:
-    description: Verify files modification
-  verify-paths:
-    description: Verify paths modification
+    description: Skip verify by creator authority.
+  forbid-files:
+    description: Forbid files. Higher than allowed.
+  forbid-paths:
+    description: Forbid paths. Higher than allowed.
+  allowed-files:
+    description: Allowed files.
+  allowed-paths:
+    description: Allowed paths.
   comment:
-    description: Comment when verification success
+    description: Comment when verification success.
   close:
-    description: Close PR when verification success
+    description: Close PR when verification success.
 
 runs:
   using: 'node12'

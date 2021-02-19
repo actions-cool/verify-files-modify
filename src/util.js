@@ -26,29 +26,49 @@ function dealStringToArr(para) {
   return arr;
 }
 
-function doVerifyFile(changeFile, verifyFiles, verifyPaths) {
+function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowedPaths) {
   /**
-   * changeFile 被包含，返回 true
+   * changeFile 不允许，返回 true
    */
   let result = false;
-  if (!verifyFiles && !verifyPaths) {
+  if (!forbidFiles && !forbidPaths && !allowedFiles && !allowedPaths) {
     return result;
   }
 
-  if (verifyFiles) {
-    const verifyFilesArr = dealStringToArr(verifyFiles);
-    for (let i = 0; i < verifyFilesArr.length; i += 1) {
-      if (changeFile === verifyFilesArr[i]) {
+  if (forbidFiles) {
+    const forbidFilesArr = dealStringToArr(forbidFiles);
+    for (let i = 0; i < forbidFilesArr.length; i += 1) {
+      if (changeFile === forbidFilesArr[i]) {
         result = true;
         break;
       }
     }
   }
 
-  if (!result && verifyPaths) {
-    const verifyPathsArr = dealStringToArr(verifyPaths);
-    for (let i = 0; i < verifyPathsArr.length; i += 1) {
-      if (changeFile.startsWith(verifyPathsArr[i])) {
+  if (!result && forbidPaths) {
+    const forbidPathsArr = dealStringToArr(forbidPaths);
+    for (let i = 0; i < forbidPathsArr.length; i += 1) {
+      if (changeFile.startsWith(forbidPathsArr[i])) {
+        result = true;
+        break;
+      }
+    }
+  }
+
+  if (!result && allowedFiles) {
+    const allowedFilesArr = dealStringToArr(allowedFiles);
+    for (let i = 0; i < allowedFilesArr.length; i += 1) {
+      if (changeFile !== forbidFilesArr[i]) {
+        result = true;
+        break;
+      }
+    }
+  }
+
+  if (!result && allowedPaths) {
+    const allowedPathsArr = dealStringToArr(allowedPaths);
+    for (let i = 0; i < allowedPathsArr.length; i += 1) {
+      if (!changeFile.startsWith(allowedPathsArr[i])) {
         result = true;
         break;
       }

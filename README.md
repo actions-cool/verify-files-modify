@@ -25,8 +25,8 @@ jobs:
         uses: actions-cool/verify-files-modify@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          verify-files: 'action.yml, LICENSE'
-          verify-paths: '.github/, dist/'
+          forbid-files: 'action.yml, LICENSE'
+          forbid-paths: '.github/, dist/'
           comment: |
             Please don't modify this.
           close: true
@@ -35,8 +35,10 @@ jobs:
 | Name | Desc | Type | Required |
 | -- | -- | -- | -- |
 | token | GitHub token | string | ✔ |
-| verify-files | Verify files modification. Support multiple, please pay attention to the format of DEMO | string | ✖ |
-| verify-paths | Verify paths modification. Support multiple, please pay attention to the format of DEMO | string | ✖ |
+| forbid-files | Forbid files. Higher than allowed. Support multiple | string | ✖ |
+| forbid-paths | Forbid paths. Higher than allowed. Support multiple | string | ✖ |
+| allowed-files | Allowed files. Support multiple | string | ✖ |
+| allowed-paths | Allowed paths. Support multiple | string | ✖ |
 | skip-verify-authority | Skip verify by creator authority. Option: `read` `write` `admin` | string | ✖ |
 | comment | Comment when verification success | string | ✖ |
 | close | Close PR when verification success | boolean | ✖ |
