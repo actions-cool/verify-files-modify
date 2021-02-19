@@ -17,5 +17,5 @@ jobs:
           allowed-paths: 'src/'
           skip-verify-authority: 'write'
           comment: |
-            Please don't modify this.
+            HI @${{ github.event.pull_request.user.login }}. Please don't modify this.
           close: true
