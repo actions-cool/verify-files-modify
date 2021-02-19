@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           forbid-files: 'action.yml, LICENSE'
           forbid-paths: '.github/, dist/'
+          assignees: 'xxx1, xxx2'
           comment: |
             Please don't modify this.
           close: true
@@ -41,6 +42,7 @@ jobs:
 | allowed-paths | Allowed paths. Support multiple | string | ✖ |
 | skip-verify-authority | Skip verify by creator authority. Option: `read` `write` `admin` | string | ✖ |
 | comment | Comment when verification success | string | ✖ |
+| assignees | Assignees when verification success | string | ✖ |
 | close | Close PR when verification success | boolean | ✖ |
 
 ## Note
