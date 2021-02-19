@@ -11,9 +11,11 @@ jobs:
       - name: verify-version
         uses: actions-cool/verify-files-modify@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          verify-files: 'action.yml, LICENSE'
-          verify-paths: '.github/, dist/'
+          forbid-files: 'action.yml, LICENSE'
+          forbid-paths: '.github/, dist/'
+          allowed-files: 'README.md, .gitignore'
+          allowed-paths: 'src/'
+          skip-verify-authority: 'write'
           comment: |
             Please don't modify this.
           close: true
