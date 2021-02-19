@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 const github = require('@actions/github');
 
-const { checkPermission, doVerifyFile } = require('./util.js');
+const { checkPermission, dealStringToArr, doVerifyFile } = require('./util.js');
 
 // *****************************************
 const token = core.getInput('token');
@@ -22,6 +22,7 @@ async function run() {
       const skipVerifyAuthority = core.getInput('skip-verify-authority');
 
       const comment = core.getInput('comment');
+      const assignees = core.getInput('assignees');
       const close = core.getInput('close');
 
       const forbidFiles = core.getInput('forbid-files');
@@ -120,6 +121,16 @@ async function run() {
             body,
           });
           core.info(`Actions: [create-comment] success!`);
+        }
+
+        if (assignees) {
+          await octokit.issues.addAssignees({
+            owner,
+            repo,
+            issue_number: issueNumber,
+            assignees: dealStringToArr(assignees),
+          });
+          core.info(`Actions: [add-assignees][${assignees}] success!`);
         }
 
         if (close == 'true') {

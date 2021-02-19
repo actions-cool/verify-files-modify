@@ -5911,7 +5911,7 @@ const core = __nccwpck_require__(186);
 const { Octokit } = __nccwpck_require__(375);
 const github = __nccwpck_require__(438);
 
-const { checkPermission, doVerifyFile } = __nccwpck_require__(254);
+const { checkPermission, dealStringToArr, doVerifyFile } = __nccwpck_require__(254);
 
 // *****************************************
 const token = core.getInput('token');
@@ -5931,6 +5931,7 @@ async function run() {
       const skipVerifyAuthority = core.getInput('skip-verify-authority');
 
       const comment = core.getInput('comment');
+      const assignees = core.getInput('assignees');
       const close = core.getInput('close');
 
       const forbidFiles = core.getInput('forbid-files');
@@ -6029,6 +6030,16 @@ async function run() {
             body,
           });
           core.info(`Actions: [create-comment] success!`);
+        }
+
+        if (assignees) {
+          await octokit.issues.addAssignees({
+            owner,
+            repo,
+            issue_number: issueNumber,
+            assignees: dealStringToArr(assignees),
+          });
+          core.info(`Actions: [add-assignees][${assignees}] success!`);
         }
 
         if (close == 'true') {

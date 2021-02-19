@@ -26,6 +26,8 @@ inputs:
     description: Allowed paths.
   comment:
     description: Comment when verification success.
+  assignees:
+    description: Assignees when verification success.
   close:
     description: Close PR when verification success.
 
