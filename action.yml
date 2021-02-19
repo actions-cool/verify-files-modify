@@ -4,7 +4,7 @@ description: 'Verify PR files modification.'
 author: 'xrkffgg'
 
 branding:
-  # https://feathericons.com/
+  # https://feathericons.com
   # e.g. https://haya14busa.github.io/github-action-brandings
   icon: 'align-justify'
   color: 'red'
