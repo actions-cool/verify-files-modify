@@ -52,7 +52,7 @@ async function run() {
         });
         const { permission } = res.data;
         out = checkPermission(skipVerifyAuthority, permission);
-        core.info(`The user ${creator} check ${out}`);
+        core.info(`The user ${creator} check auth ${out}!`);
         return out;
       }
 

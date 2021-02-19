@@ -5961,7 +5961,7 @@ async function run() {
         });
         const { permission } = res.data;
         out = checkPermission(skipVerifyAuthority, permission);
-        core.info(`The user ${creator} check ${out}`);
+        core.info(`The user ${creator} check auth ${out}!`);
         return out;
       }
 
@@ -6095,6 +6095,7 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
   /**
    * changeFile 不允许，返回 true
    */
+  console.log(`[VerifyFile: ${changeFile} begin!]`);
   let result = false;
   if (!forbidFiles && !forbidPaths && !allowedFiles && !allowedPaths) {
     return result;
@@ -6104,6 +6105,7 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
     const forbidFilesArr = dealStringToArr(forbidFiles);
     for (let i = 0; i < forbidFilesArr.length; i += 1) {
       if (changeFile === forbidFilesArr[i]) {
+        console.log(`[VerifyFile: ${changeFile} === ${forbidFilesArr[i]}. Sorry!]`);
         result = true;
         break;
       }
@@ -6114,6 +6116,7 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
     const forbidPathsArr = dealStringToArr(forbidPaths);
     for (let i = 0; i < forbidPathsArr.length; i += 1) {
       if (changeFile.startsWith(forbidPathsArr[i])) {
+        console.log(`[VerifyFile: ${changeFile}.startsWith(${forbidPathsArr[i]}). Sorry!]`);
         result = true;
         break;
       }
@@ -6128,10 +6131,15 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
       if (!allowed && changeFile !== allowedFilesArr[i]) {
         result = true;
       } else {
+        console.log(`[VerifyFile: ${changeFile} === (${allowedFilesArr[i]}). Good!]`);
         allowed = true;
         break;
       }
     }
+  }
+
+  if (allowed) {
+    return false;
   }
 
   if (!result && !allowed && allowedPaths) {
@@ -6140,6 +6148,7 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
       if (!allowed && !changeFile.startsWith(allowedPathsArr[i])) {
         result = true;
       } else {
+        console.log(`[VerifyFile: ${changeFile}.startsWith(${allowedPathsArr[i]}). Good!]`);
         allowed = true;
         break;
       }
