@@ -6118,6 +6118,8 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
     }
   }
 
+  let allowed = false;
+
   if (!result && allowedFiles) {
     const allowedFilesArr = dealStringToArr(allowedFiles);
     for (let i = 0; i < allowedFilesArr.length; i += 1) {
@@ -6126,9 +6128,12 @@ function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowe
         break;
       }
     }
+    if (!result) {
+      allowed = true;
+    }
   }
 
-  if (!result && allowedPaths) {
+  if (!result && !allowed && allowedPaths) {
     const allowedPathsArr = dealStringToArr(allowedPaths);
     for (let i = 0; i < allowedPathsArr.length; i += 1) {
       if (!changeFile.startsWith(allowedPathsArr[i])) {
