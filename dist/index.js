@@ -5960,7 +5960,7 @@ async function run() {
           username: creator,
         });
         const { permission } = res.data;
-        out = checkPermission(needCreatorAuthority, permission);
+        out = checkPermission(skipVerifyAuthority, permission);
         core.info(`The user ${creator} check ${out}`);
         return out;
       }
