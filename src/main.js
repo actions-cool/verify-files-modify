@@ -127,7 +127,7 @@ async function run() {
           await octokit.issues.addAssignees({
             owner,
             repo,
-            issue_number: issueNumber,
+            issue_number: number,
             assignees: dealStringToArr(assignees),
           });
           core.info(`Actions: [add-assignees][${assignees}] success!`);
