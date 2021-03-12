@@ -5974,6 +5974,9 @@ async function run() {
 
       if (!result) {
         const changeFiles = await getFiles();
+        if (changeFiles.length == 0) {
+          return false;
+        }
         for (let i = 0; i < changeFiles.length; i += 1) {
           if (
             doVerifyFile(
