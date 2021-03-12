@@ -2,6 +2,8 @@
 
 ## v1.1.1
 
+`2021.03.12`
+
 - fix: ignore empty files
 
 ## v1.1.0
