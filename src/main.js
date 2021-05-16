@@ -2,7 +2,8 @@ const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 const github = require('@actions/github');
 
-const { checkPermission, dealStringToArr, doVerifyFile } = require('./util.js');
+const { checkPermission, dealStringToArr } = require('actions-util');
+const { doVerifyFile } = require('./util.js');
 
 // *****************************************
 const token = core.getInput('token');
@@ -20,6 +21,12 @@ async function run() {
       const creator = context.payload.pull_request.user.login;
 
       const skipVerifyAuthority = core.getInput('skip-verify-authority');
+      const skipVerifyUsers = core.getInput('skip-verify-users');
+
+      if (skipVerifyUsers && dealStringToArr(skipVerifyUsers).includes(creator)) {
+        core.info(`Actions: The creator ${creator} is in ${skipVerifyUsers}. Do skip!`);
+        return false;
+      }
 
       const comment = core.getInput('comment');
       const assignees = core.getInput('assignees');

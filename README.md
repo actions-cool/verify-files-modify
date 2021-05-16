@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: verify-version
-        uses: actions-cool/verify-files-modify@v1.1.0
+        uses: actions-cool/verify-files-modify@v1.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           forbid-files: 'action.yml, LICENSE'
@@ -41,6 +41,7 @@ jobs:
 | allowed-files | Allowed files. Support multiple | string | ✖ |
 | allowed-paths | Allowed paths. Support multiple | string | ✖ |
 | skip-verify-authority | Skip verify by creator authority. Option: `read` `write` `admin` | string | ✖ |
+| skip-verify-users | Skip verify by creator userid. Support multiple | string | ✖ |
 | comment | Comment when verification success | string | ✖ |
 | assignees | Assignees when verification success | string | ✖ |
 | close | Close PR when verification success | boolean | ✖ |
@@ -49,6 +50,18 @@ jobs:
 
 - When PR come from fork, it requires `pull_request_target` to comment or close. When use pull_request_target, must [read](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target)
 - When use `pull_request` and PR come from fork. It will show CI badge status only
+- `skip-verify-users`: like 'x1, x2, x3'
+
+## ⚡ Feedback
+
+You are very welcome to try it out and put forward your comments. You can use the following methods:
+
+- Report bugs or consult with [Issue](https://github.com/actions-cool/verify-files-modify/issues)
+- Submit [Pull Request](https://github.com/actions-cool/verify-files-modify/pulls) to improve the code of `verify-files-modify`
+
+也欢迎加入 钉钉交流群
+
+![](https://github.com/actions-cool/resources/blob/main/dingding.jpeg?raw=true)
 
 ## Changelog
 
