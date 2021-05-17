@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.2
+
+`2021.05.17`
+
+- fix: dealStringToArr lost.
+
 ## v1.2.1
 
 `2021.05.17`

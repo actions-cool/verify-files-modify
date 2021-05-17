@@ -1,3 +1,5 @@
+const { dealStringToArr } = require('actions-util');
+
 function doVerifyFile(changeFile, forbidFiles, forbidPaths, allowedFiles, allowedPaths) {
   /**
    * changeFile 不允许，返回 true
