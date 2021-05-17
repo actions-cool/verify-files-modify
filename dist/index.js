@@ -7358,7 +7358,7 @@ async function run() {
         return out;
       }
 
-      let result = true;
+      let result = false;
 
       if (skipVerifyAuthority) {
         result = await checkAuthority();

@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1
+
+`2021.05.17`
+
+- fix: init inspection status.
+
 ## v1.2.0
 
 `2021.05.16`
