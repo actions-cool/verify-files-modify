@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 const github = require('@actions/github');
 
-const { checkPermission, dealStringToArr } = require('actions-util');
+const { checkPermission, dealStringToArr, THANKS } = require('actions-util');
 const { doVerifyFile } = require('./util.js');
 
 // *****************************************
@@ -164,6 +164,7 @@ async function run() {
     } else {
       core.setFailed(`This Action only support "pull_request" or "pull_request_target"!`);
     }
+    core.info(THANKS);
   } catch (error) {
     core.setFailed(error.message);
   }
