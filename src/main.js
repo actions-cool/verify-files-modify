@@ -11,6 +11,8 @@ const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
 
 const FIXED = '<!-- Created by actions-cool/verify-files-modify. Do not remove. -->';
+const InfoMessage =
+  'You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml';
 
 // *****************************************
 async function run() {
@@ -22,6 +24,7 @@ async function run() {
 
       const skipVerifyAuthority = core.getInput('skip-verify-authority');
       const skipVerifyUsers = core.getInput('skip-verify-users');
+      const setFailedInput = core.getInput('set-failed');
 
       if (skipVerifyUsers && dealStringToArr(skipVerifyUsers).includes(creator)) {
         core.info(`Actions: The creator ${creator} is in ${skipVerifyUsers}. Do skip!`);
@@ -95,6 +98,10 @@ async function run() {
 
       core.info(`The check result is ${result}.`);
 
+      function coreResult() {
+        setFailedInput == 'false' ? core.info(InfoMessage) : core.setFailed(InfoMessage);
+      }
+
       if (!result && context.eventName === 'pull_request_target') {
         let ifHasComment = false;
         let commentId;
@@ -153,13 +160,9 @@ async function run() {
           core.info(`Actions: [close-pr][${number}] success!`);
         }
 
-        core.setFailed(
-          `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
-        );
+        coreResult();
       } else if (!result && context.eventName === 'pull_request') {
-        core.setFailed(
-          `You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml !`,
-        );
+        coreResult();
       }
     } else {
       core.setFailed(`This Action only support "pull_request" or "pull_request_target"!`);

@@ -45,6 +45,7 @@ jobs:
 | comment | Comment when verification success | string | ✖ |
 | assignees | Assignees when verification success | string | ✖ |
 | close | Close PR when verification success | boolean | ✖ |
+| set-failed | When hit, whether set failed. Default true | boolean | ✖ |
 
 ## Note
 

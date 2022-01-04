@@ -32,6 +32,8 @@ inputs:
     description: Assignees when verification success.
   close:
     description: Close PR when verification success.
+  set-failed:
+    description: When hit, whether set failed.
 
 runs:
   using: 'node12'
