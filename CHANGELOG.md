@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.0
+
+`2022.04.17`
+
+- feat: add `comment-mark`.
+
 ## v1.4.0
 
 `2022.01.04`

@@ -4,8 +4,6 @@ description: 'Verify PR files modification.'
 author: 'xrkffgg'
 
 branding:
-  # https://feathericons.com
-  # e.g. https://haya14busa.github.io/github-action-brandings
   icon: 'align-justify'
   color: 'red'
 
@@ -28,6 +26,8 @@ inputs:
     description: Allowed paths.
   comment:
     description: Comment when verification success.
+  comment-mark:
+    description: Comment mark to find.
   assignees:
     description: Assignees when verification success.
   close:

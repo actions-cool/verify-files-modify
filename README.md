@@ -43,6 +43,7 @@ jobs:
 | skip-verify-authority | Skip verify by creator authority. Option: `read` `write` `admin` | string | ✖ |
 | skip-verify-users | Skip verify by creator userid. Support multiple | string | ✖ |
 | comment | Comment when verification success | string | ✖ |
+| comment-mark | Comment mark to find. | string | ✖ |
 | assignees | Assignees when verification success | string | ✖ |
 | close | Close PR when verification success | boolean | ✖ |
 | set-failed | When hit, whether set failed. Default true | boolean | ✖ |

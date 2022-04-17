@@ -10,7 +10,7 @@ const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
 
-const FIXED = '<!-- Created by actions-cool/verify-files-modify. Do not remove. -->';
+const FIXED = 'Created by actions-cool/verify-files-modify. Do not remove.';
 const InfoMessage =
   'You have modified a disabled file or paths, please check! See .github/Workflows/verify-files-modify.yml';
 
@@ -32,6 +32,7 @@ async function run() {
       }
 
       const comment = core.getInput('comment');
+      const commentMark = core.getInput('comment-mark');
       const assignees = core.getInput('assignees');
       const close = core.getInput('close');
 
@@ -111,16 +112,21 @@ async function run() {
           issue_number: number,
         });
 
+        let commentFixed = `<!-- ${FIXED} -->`;
+        if (commentMark) {
+          commentFixed = `<!-- ${FIXED} ${commentMark} -->`;
+        }
+
         const commentsArr = commentData.data;
         for (let i = 0; i < commentsArr.length; i++) {
-          if (commentsArr[i].body.includes(FIXED)) {
+          if (commentsArr[i].body.includes(commentFixed)) {
             ifHasComment = true;
             commentId = commentsArr[i].id;
             break;
           }
         }
 
-        const body = `${comment}\n\n${FIXED}`;
+        const body = `${comment}\n\n${commentFixed}`;
 
         if (comment && ifHasComment) {
           await octokit.issues.updateComment({
