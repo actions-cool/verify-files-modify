@@ -16,6 +16,8 @@ inputs:
     description: Skip verify by creator authority.
   skip-verify-users:
     description: Skip verify by github userid.
+  skip-label:
+    description: Skip verify by pr label.
   forbid-files:
     description: Forbid files. Higher than allowed.
   forbid-paths:

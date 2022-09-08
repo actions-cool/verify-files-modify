@@ -9725,10 +9725,20 @@ async function run() {
       const { owner, repo } = context.repo;
       const number = context.payload.pull_request.number;
       const creator = context.payload.pull_request.user.login;
+      const labels = context.payload.pull_request.labels;
 
       const skipVerifyAuthority = core.getInput('skip-verify-authority');
       const skipVerifyUsers = core.getInput('skip-verify-users');
+      const skipLabel = core.getInput('skip-label');
       const setFailedInput = core.getInput('set-failed');
+
+      if (skipLabel && labels && labels.length) {
+        const labelsName = labels.map(({ name }) => name);
+        if (labelsName.includes(skipLabel)) {
+          core.info(`Actions: The ${skipLabel} is in ${JSON.stringify(labelsName)}. Do skip!`);
+          return false;
+        }
+      }
 
       if (skipVerifyUsers && dealStringToArr(skipVerifyUsers).includes(creator)) {
         core.info(`Actions: The creator ${creator} is in ${skipVerifyUsers}. Do skip!`);

@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.6.0
+
+- feat: support `skip-label`.
+
 ## v1.5.0
 
 `2022.04.17`

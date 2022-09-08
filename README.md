@@ -42,6 +42,7 @@ jobs:
 | allowed-paths | Allowed paths. Support multiple | string | ✖ |
 | skip-verify-authority | Skip verify by creator authority. Option: `read` `write` `admin` | string | ✖ |
 | skip-verify-users | Skip verify by creator userid. Support multiple | string | ✖ |
+| skip-label | Skip label | string | ✖ |
 | comment | Comment when verification success | string | ✖ |
 | comment-mark | Comment mark to find. | string | ✖ |
 | assignees | Assignees when verification success | string | ✖ |
