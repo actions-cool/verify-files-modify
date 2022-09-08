@@ -2,6 +2,8 @@
 
 ## v1.6.0
 
+`2022.09.08`
+
 - feat: support `skip-label`.
 
 ## v1.5.0
