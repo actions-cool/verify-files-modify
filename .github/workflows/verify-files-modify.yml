@@ -16,6 +16,7 @@ jobs:
           allowed-files: 'README.md, .gitignore'
           allowed-paths: 'src/'
           skip-verify-authority: 'write'
+          skip-label: skip-verify-files
           assignees: 'xrkffgg, ajuner'
           comment: |
             HI @${{ github.event.pull_request.user.login }}. Please don't modify this.
