@@ -27,6 +27,7 @@ async function run() {
       const skipVerifyUsers = core.getInput('skip-verify-users');
       const skipLabel = core.getInput('skip-label');
       const setFailedInput = core.getInput('set-failed');
+      const skipContributionCount = core.getInput('skip-contribution-count');
 
       if (skipLabel && labels && labels.length) {
         const labelsName = labels.map(({ name }) => name);
@@ -78,10 +79,26 @@ async function run() {
         return out;
       }
 
+      async function checkCommitsCount() {
+        const res = await octokit.repos.listCommits({
+          owner,
+          repo,
+          author: creator,
+          per_page: skipContributionCount,
+        });
+        const out = res.data.length >= skipContributionCount;
+        core.info(`The user ${creator} check commits count ${out}!`);
+        return out;
+      }
+
       let result = false;
 
       if (skipVerifyAuthority) {
         result = await checkAuthority();
+      }
+
+      if (!result && skipContributionCount) {
+        result = await checkCommitsCount();
       }
 
       if (!result) {

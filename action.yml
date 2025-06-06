@@ -18,6 +18,8 @@ inputs:
     description: Skip verify by github userid.
   skip-label:
     description: Skip verify by pr label.
+  skip-contribution-count:
+    description: Skip verify by commits count.
   forbid-files:
     description: Forbid files. Higher than allowed.
   forbid-paths:
@@ -38,5 +40,5 @@ inputs:
     description: When hit, whether set failed.
 
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'
