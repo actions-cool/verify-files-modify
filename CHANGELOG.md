@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.7.0
+
+`2025.06.06`
+
+- feat: support skip-contribution-count
+
 ## v1.6.0
 
 `2022.09.08`
