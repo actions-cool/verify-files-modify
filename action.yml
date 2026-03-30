@@ -40,5 +40,5 @@ inputs:
     description: When hit, whether set failed.
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
